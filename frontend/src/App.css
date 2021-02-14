@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Josefin Sans",sans-serif;
+}
+  
+nav{
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+    width: 200px;
+    background-color:#1a3241;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+nav a{
+    display: block;
+    color:rgb(197, 185, 185);
+    font-weight: bolder;
+    font-size: 15px;
+    padding: 10px;
+    text-decoration: none;
+    margin-top: 15px;
+    background-color: #2a4352;
+}
+
+nav h2{
+    margin:15px 0 20px 0 ;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(190, 177, 177);
+}
+  
+nav a:hover{
+    background:#2a4352;
+}
+
+.div2{
+    margin-left: 200px;
+    padding: 1px 10px;
+}
+
+.container{
+    border-radius: 5px;
+    padding: 25px;
+}
+
+label{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    width: 30%;
+}
+  
+input{
+    width: 50%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table {
+    width:100%;
+    background-color:white;
+  
+}
+table, th, td {
+    border: 1px solid rgb(192, 182, 182);
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+#t01 th {
+    background-color:#1f3846;
+    color:#fff;
+}
+  
+#small-button {
+    padding: 3px ;
+    margin: 2px 5px ;
+    height: 22px ;
+    font-size: 0.7em ;
+    width: 40px;
+}
+
