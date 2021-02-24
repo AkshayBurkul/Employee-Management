@@ -36,47 +36,47 @@ function Viewdetails() {
     const Save = (id) =>{
         if(selectEmployee.password === '' || selectEmployee.password === undefined){
             swal('Please enter password');
+            return;
         }
         else if ((selectEmployee.password).length < 8 )
         {
             swal("Password length must be >= 8 characters.");
+            return;
         }
-        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(selectEmployee.email))
+        else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(selectEmployee.email))
         {
+            swal("Enter valid email id")
             return;
         }
         else{
-            swal("You have entered an invalid email address!")     
-        }
-
-        if(readOnly){
-            axios.post('http://127.0.0.1:8000/api/employee/',selectEmployee)
-                .then(res => {
-                    swal("Employee details save successfully.", { icon: "success"});
-                    setTimeout(function(){ window.location.reload() }, 2000);
-                })
-                .catch(error => {
-                        swal({text: "All fields are mandatory" , icon: "error"});
-                });
-        }
-        else {
-            swal({text: "Are you sure you want to update this employee details",
-            buttons: ['No', 'Yes'],
-            dangerMode: true
-            })
-            .then((isConfirm) => {
-                if (isConfirm) {
-                    axios.put('http://127.0.0.1:8000/api/employee/' + id , selectEmployee)                
+            if(readOnly){
+                axios.post('http://127.0.0.1:8000/api/employee/',selectEmployee)
                     .then(res => {
-                            swal("Employee details update successfully.", { icon: "success"});
-                            setTimeout(function(){ window.location.reload() }, 2000);
-                        })
-                        .catch(error => {
-                                swal({text: "Unable to connect to the Api" , icon: "error"});
-                        });
-                    }})
-            }
-    }
+                        swal("Employee details save successfully.", { icon: "success"});
+                        setTimeout(function(){ window.location.reload() }, 2000);
+                    })
+                    .catch(error => {
+                            swal({text: "All fields are mandatory" , icon: "error"});
+                    });
+                }
+            else {
+                swal({text: "Are you sure you want to update this employee details",
+                buttons: ['No', 'Yes'],
+                dangerMode: true
+                })
+                .then((isConfirm) => {
+                    if (isConfirm) {
+                        axios.put('http://127.0.0.1:8000/api/employee/' + id , selectEmployee)
+                        .then(res => {
+                                swal("Employee details update successfully.");
+                                setTimeout(function(){ window.location.reload() }, 2000);
+                            })
+                            .catch(error => {
+                                    swal({text: "Unable to connect to the Api" , icon: "error"});
+                            });
+                        }})
+                }
+        }   }
         
     const deleteEmployee = (id) => {
     swal({text: "Are you sure you want to delete this employee details",

@@ -2,6 +2,7 @@ import {React,useState} from 'react'
 import { Row, FieldSet ,Button, Label ,Br ,Block } from '../utils/Styles'
 import {Link} from 'react-router-dom';
 import swal from 'sweetalert';
+import axios from 'axios';
 
 function Signup() {
     const [signupData,setSignupData]=useState(
@@ -17,6 +18,7 @@ function Signup() {
     }
 
     const Signup = () => {
+
         if(signupData.username == '' || signupData.password == '' || signupData.conf_password == ''){
             swal("All fields are required");
             return;
@@ -26,7 +28,17 @@ function Signup() {
             swal("Password length must be >= 8 characters.");
             return;
         }
+        else{
+            axios.post('http://127.0.0.1:8000/api/register/', signupData)
+                .then(res => {
+                    swal("User Register successfully.", { icon: "success"});
+                    setTimeout(function(){ window.location.reload() }, 2000);
+                })
+                .catch(error => {
+                    swal(error);
+            });}
     }
+    
     return (
         <div>
             <div className="div2">

@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <Layout/>
       <Switch>
-        <Route exact path="/login" component={props => <Login {...props} />}/>
+        <Route exact path="/" component={props => <Login {...props} />}/>
         <Route exact path="/signup" component={props => <Signup {...props} />}/>
-        <Route exact path="/" component={props => <Viewdetails {...props} />}/>
+        <Route exact path="/home" component={props => <Viewdetails {...props} />}/>
         <Redirect to="/"/>
       </Switch>
     </div>
